@@ -1,0 +1,35 @@
+{
+  "name": "nocturnal",
+  "version": "0.1.0",
+  "description": "SSG meta-framework for native Web Components",
+  "type": "module",
+  "main": "./lib/index.js",
+  "bin": {
+    "noc": "./bin/cli.js"
+  },
+  "scripts": {
+    "create": "node bin/cli.js create",
+    "build": "node bin/cli.js build",
+    "serve": "node bin/cli.js serve",
+    "dev": "node bin/cli.js watch",
+    "test:api": "node test/api-routes.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "nocturnal-components": "github:dmac780/nocturnal-components"
+  },
+  "keywords": [
+    "ssg",
+    "web-components",
+    "shadow-dom",
+    "static-site-generator"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmac780/nocturnal.git"
+  },
+  "homepage": "https://github.com/dmac780/nocturnal#readme"
+}

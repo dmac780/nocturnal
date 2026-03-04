@@ -1,0 +1,22 @@
+# Dependencies (user runs npm install)
+node_modules/
+
+# Build output (user runs noc build)
+dist/
+
+# Scaffolded site (rebuilt with noc create from bootstrap)
+src/
+
+# Env and logs
+.env
+.env.*
+*.log
+npm-debug.log*
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
