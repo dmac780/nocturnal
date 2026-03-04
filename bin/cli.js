@@ -182,6 +182,22 @@ async function scaffold(root, profileName) {
     console.log(`[nocturnal] ${green('created')}  ${file}`);
   }
 
+  // Ensure root package.json has "type": "module" so src/config.js loads as ESM
+  const pkgPath = path.join(root, 'package.json');
+  if (fs.existsSync(pkgPath)) {
+    try {
+      const pkgRaw = fs.readFileSync(pkgPath, 'utf8');
+      const pkg = JSON.parse(pkgRaw);
+      if (pkg.type !== 'module') {
+        pkg.type = 'module';
+        fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2), 'utf8');
+        console.log(`[nocturnal] ${green('updated')}  package.json (added "type": "module")`);
+      }
+    } catch (err) {
+      console.warn(`[nocturnal] ${yellow('⚠')}  Could not set "type": "module" in package.json: ${err.message}`);
+    }
+  }
+
   console.log(`\n[nocturnal] ${green('✓')} Done. Your Nocturnal site is ready.`);
   console.log('[nocturnal] Next steps:');
   console.log('[nocturnal]   noc build   - Build your site to dist/');
